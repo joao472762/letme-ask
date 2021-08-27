@@ -8,12 +8,33 @@ import '../styles/button.scss'
 
 import { Button } from '../components/button';
 import { useAuth } from '../hooks/useAuth'
+import {database} from '../services/firebase'
 
-import { Link } from 'react-router-dom'
+import {FormEvent, useState} from 'react'
+import { Link ,useHistory} from 'react-router-dom'
+import { Room } from './Room'
 
 
 export function NewRoom(){
     const {user} = useAuth()
+    const history = useHistory()
+    const [newRoom, setNewRoom] = useState('')
+
+   async function handleCreateRoom(event:FormEvent){
+       event.preventDefault()
+       
+       if(newRoom.trim() === ''){
+           return;
+        }
+        
+       const roomReef = database.ref('rooms')
+       const firebaseRoom = await roomReef.push({
+           title: newRoom,
+           authorId: user?.id
+       })
+       
+       history.push(`/rooms/${firebaseRoom.key}`)
+      }
 
     return(
         <div id="authentic">
@@ -33,10 +54,13 @@ export function NewRoom(){
                 </h2>
                 
 
-                <form>
+                <form  onClick={handleCreateRoom}>
                     <input 
                     type="text"
-                    placeholder="Nome da Sala" />
+                    placeholder="Nome da Sala"
+                    onChange = {event => setNewRoom(event.target.value)}
+                    value = {newRoom}
+                    />
 
                     <Button type='submit'>
                         <span>Criar Sala</span>

@@ -11,11 +11,16 @@ import { Button } from '../components/button';
 import {useAuth} from '../hooks/useAuth'
 
 import {useHistory} from 'react-router-dom'
+import { FormEvent, useState } from 'react'
+
+import { database } from '../services/firebase'
 
 
 export function Home(){
 
     const history = useHistory()
+    const [codeRoom, setCodeRoom] = useState('')
+
     const {user,signInWithGoogle} = useAuth()
 
     async function handleCreateRoom(){
@@ -23,6 +28,24 @@ export function Home(){
             await signInWithGoogle()
         }
         history.push('/rooms/new')
+    }
+
+    async function handleEnterRoom(event:FormEvent){
+        event.preventDefault()
+
+        if(codeRoom.trim() === ''){
+            return;
+        }
+        const roomref =  await database.ref(`rooms/${codeRoom}`).get()
+        
+        if(!roomref.exists()){
+            alert(`não cosegui achar ${codeRoom}. Veja se escreveu o nome corretamente`)
+            return
+        }
+
+        history.push(`rooms/${codeRoom}`)
+    
+
     }
     return(
         <div id="authentic">
@@ -48,14 +71,19 @@ export function Home(){
                     ou entre um uma sala
                 </div>
 
-                <form>
+                <form onClick={handleEnterRoom}>
+
                     <input 
                     type="text"
-                    placeholder="Digite o código da sala" />
+                    placeholder="Digite o código da sala"
+                    onChange = {event => {setCodeRoom(event.target.value)}}
+                    value= {codeRoom}
+                     />
 
                     <Button type='submit'>
                         <img src={enter} alt="" /> <span>Entrar na Sala</span>
                     </Button>
+
                 </form>
             </main>
         </div>

@@ -1,0 +1,90 @@
+#partcipantRoom{
+    header{
+        max-width: 95%;
+        margin: 0 auto;
+        align-items: center;
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 5rem;
+        
+       div{
+           font: 600 2rem 'Poppins', Arial, sans-serif;
+       }
+
+    }
+    main{
+        width: 80%;
+        max-width: 160rem;
+      
+        margin: 0 auto;
+
+        h1{
+            font: 700 2.4rem 'Poppins', Arial, sans-serif  ;
+            color: #29292E;
+            margin-bottom: 2.4rem;
+
+        }
+        
+        form {
+            textarea{
+                padding: 2rem;
+                width: 100%;
+                min-height: 13.3rem;
+                color: #737380;
+                margin-bottom: 1rem;
+                font: 400 1.8rem 'Roboto', 'Arial', sans-serif, serif
+            }
+
+            div{
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                margin-bottom: 6rem;
+
+                p{
+                    font: 400 1.6rem 'Roboto', 'Arial', sans-serif;
+                    color: #737380;
+
+                    span{
+                        color: #835AFD;
+                        font: 400 1.6rem 'Roboto', 'Arial', sans-serif;
+                        text-decoration: underline;}
+                   
+                }
+                Button{
+                    
+                    min-width: 17rem ;
+                
+                    padding: 13px 20px;
+                    
+                }
+                
+            }
+            
+
+        }
+        section{
+            
+            max-width: 50rem;
+            margin:  0 auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+
+            img{
+                height: 100%;
+                
+            };
+            h2{
+                font: 600 1.8rem 'Poppis', Arial, sans-serif;
+                color: #29292E;
+                margin-bottom: 0.8rem;
+            }
+            p{
+                font: 400 1.4rem 'Roboto', Arial, sans-serif;
+                color: #29292E;
+            }
+        }
+
+    }
+}
