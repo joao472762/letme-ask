@@ -1,6 +1,7 @@
 #partcipantRoom{
     header{
-        max-width: 95%;
+        width: 100%;
+        max-width: 120rem;
         margin: 0 auto;
         align-items: center;
         display: flex;
@@ -14,27 +15,56 @@
     }
     main{
         width: 80%;
-        max-width: 160rem;
+        max-width: 80rem;
       
         margin: 0 auto;
 
-        h1{
-            font: 700 2.4rem 'Poppins', Arial, sans-serif  ;
-            color: #29292E;
+        .roomTitle{
+            display: flex;
             margin-bottom: 2.4rem;
 
+            h1{
+                font: 700 2.4rem 'Poppins', Arial, sans-serif  ;
+                color: #29292E;
+                margin-bottom: 2.4rem;
+            }
+            span{
+                font: 500 1.4rem "Roboto", Arial, sans-serif, serif;
+                margin-left: 1.6rem;
+                display: flex;
+                height: 3.2rem;
+                width: 50%;
+                max-width: 12.7rem;
+                align-items: center;
+                justify-content: center;
+                color: #F8F8F8;
+                border-radius: 1.6rem;
+                background-color: #E559F9;
+            }
+            
+            
         }
         
         form {
             textarea{
+                box-shadow: 0rem 0.2rem 1.2rem rgba(0,0,0,0.4);
+                background: #fefefe;
                 padding: 2rem;
                 width: 100%;
                 min-height: 13.3rem;
                 color: #737380;
                 margin-bottom: 1rem;
-                font: 400 1.8rem 'Roboto', 'Arial', sans-serif, serif
-            }
+                font: 400 1.8rem 'Roboto', 'Arial', sans-serif, serif;
+                resize: vertical;
+                outline: none;
+                border-radius: 0.8rem;
 
+                &:focus{
+                    border: 1px solid #737380;
+                    
+                }
+            }
+            
             div{
                 display: flex;
                 justify-content: space-between;
@@ -48,8 +78,27 @@
                     span{
                         color: #835AFD;
                         font: 400 1.6rem 'Roboto', 'Arial', sans-serif;
-                        text-decoration: underline;}
+                        text-decoration: underline;
+                        cursor: pointer;
+                        margin-left: 0.8rem;
+                    }
                    
+                }
+                .logIn{
+                    display: flex;
+                    align-items: center;
+                    
+                    img{
+                        height: 3.2rem;
+                        width: 3.2rem;
+                        border-radius: 50% ;
+                    }
+
+                    span{
+                        font: 500 1.4rem 'Roboto', 'Arial';
+                        color: #29292E;
+                        text-decoration: none;
+                    }
                 }
                 Button{
                     

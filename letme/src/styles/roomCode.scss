@@ -1,0 +1,24 @@
+.roomCode{
+    
+    display: flex;
+ 
+    height: 4.2rem;
+    border-radius: 0.8rem;
+    align-items: center;
+    border: 1px solid #835AFD;
+    cursor: pointer;
+    
+    div{
+        height: 100%;
+        padding:  0.8rem 1.2rem;
+        border-radius: 0.8rem 0 0 0.8rem;
+        background: #835AFD
+    }
+    span{
+        padding: 0 1.2rem;
+        flex: 1;
+        text-align: center;    
+        font: 500 1.4rem 'Roboto', Arial, 'sans-serif';
+        
+    }
+}
