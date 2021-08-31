@@ -7,7 +7,7 @@ import {RoomCode} from '../components/RoomCode'
 
 
 import { useParams } from 'react-router-dom';
-import { FormEvent, useState } from 'react';
+import { FormEvent, useEffect, useState } from 'react';
 
 import '../styles/rom.scss'
 import { database } from '../services/firebase';
@@ -16,14 +16,63 @@ type parmsProps = {
     id:string
 }
 
+type FirebaseQuestion = Record<string,{
+    author: {
+        nome: string,
+        avatar:string
+    },
+    content: string,
+    isHighlighted: boolean,
+    isAswer: boolean
+    
+}>
+type questionsProps = {
+    id: string,
+    author: {
+        nome: string,
+        avatar:string
+    },
+    content: string,
+    isHighlighted: boolean,
+    isAswer: boolean
+ 
+}
 export function Room(){
     
     const {signInWithGoogle, user } = useAuth()
     const [newQuestion, setNewQuestion] = useState('')
     const params = useParams<parmsProps>()
-
-
     const roomId = params.id
+    const [questions,setQuestions] = useState<questionsProps[]>([])
+    const [title,setTitle] = useState('')
+
+
+    useEffect(() => {
+        
+        const roomRef = database.ref(`rooms/${roomId}`)
+        roomRef.on('value', room =>{
+            const databaseRoom = room.val()
+            
+            const firebaseQuestion = room.val().questions as FirebaseQuestion ?? {};
+            
+            const parseQuestion = Object.entries(firebaseQuestion).map(([key,value]) => {
+                return{
+                    id: key,
+                    content: value.content,
+                    author: value.author,
+                    isHighlighted: value.isHighlighted,
+                    isAswer: value.isAswer
+                }
+            })
+            setTitle(databaseRoom.title)
+      
+            setQuestions(parseQuestion)
+            console.log(parseQuestion)            
+        })
+        
+    },[roomId])
+
+
 
     async function handleSendQuestion(event:FormEvent){
         event.preventDefault()
@@ -42,8 +91,9 @@ export function Room(){
             isHighlighted: false,
             isAswer: false
         }
-        await database.ref(`rooms/${roomId}/question`).push(question)
+        await database.ref(`rooms/${roomId}/questions`).push(question)
         
+        setNewQuestion('')
     }
 
     return(
@@ -61,11 +111,13 @@ export function Room(){
 
                 <div className="roomTitle">
                     <h1>
-                        Sala React Q&amp; A
+                        {title}  
                     </h1>
-                    <span>
-                        4 perguntas
+                    {questions.length > 0 && (
+                        <span>
+                        {questions.length} perguntas
                     </span>
+                    )}
                 </div>
 
                 <form onSubmit={handleSendQuestion}>
@@ -97,6 +149,9 @@ export function Room(){
                 </form>
 
                 <section>
+                    <p>
+                        {JSON.stringify(questions)}
+                    </p>
                     <img src={emptyQuestion} alt="" />
                     <h2>Nenhuma pergunta por aqui...</h2>
                     <p>faça o seu login e seja a primeira pessoa a fazer uma pergunta</p>
