@@ -1,0 +1,35 @@
+.questions{
+    border-radius: 0.8px;
+    box-shadow:  1px 1px 12px rgba(70, 70, 70, 0.4);
+    padding: 2.4rem;
+
+    & + .questions{
+        margin-top: 1.6rem;
+    }
+    p{
+        color: #29292e;
+    }
+    /*footer==========*/    
+    footer{
+        display: flex;
+        align-items: center;
+        justify-content:  space-between;
+
+        margin-top: 1.5rem;
+        .userInfo{
+            display: flex;
+            align-items: center; 
+            img{
+                height: 3.2rem;
+                width: 3.2rem;
+                border-radius: 50%
+            }
+            span{
+                margin-left: 0.8em;
+                color: #737380;
+            }
+    
+        }
+    }
+    /*footer==========*/
+}

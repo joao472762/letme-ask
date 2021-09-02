@@ -14,6 +14,15 @@
     img{
         margin-right: 0.8rem;
     }
+    &.outlined{
+        background:  #FEFEFE !important;
+        border: 1px solid #835AFD !important;
+        color: #835AFD !important;
+        height: 4.2rem;
+        width: 13rem;
+        padding: 13px 1rem !important;
+        margin-left: 0.8rem;
+    }
 
     &:not(:disabled):hover{
         filter: brightness(0.8);

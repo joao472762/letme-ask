@@ -139,10 +139,44 @@
                     text-decoration: underline;
                 }
             }
-
+           
         }
         /*section================*/
-    
+        
     }
-     /*main=======================*/
+    /*main=======================*/
+
+}   
+.buttonLike{
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    background: transparent;
+    transition: filter 0.3s;
+
+    
+    svg{
+        margin: 0px 0px -2px 10px
+        
+    }
+    span{
+        color: #737380;
+         
+        font-weight: 500;
+    }
+    &:hover{
+        filter: brightness(0.6);
+        
+    }
+    &.liked{
+        color: #835afd;
+    
+        svg path{
+            stroke:  #835afd;
+        }
+        span{
+            color:  #835afd;
+        }
+    }
 }
+
