@@ -42,6 +42,10 @@ export function Home(){
             alert(`não cosegui achar ${codeRoom}. Veja se escreveu o nome corretamente`)
             return
         }
+        if(roomref.val().endedAt){
+            alert('está sala já foi encerrada')
+            return;
+        }
 
         history.push(`rooms/${codeRoom}`)
     

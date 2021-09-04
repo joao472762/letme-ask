@@ -12,7 +12,7 @@ type questionsProps = {
     isHighlighted: boolean,
     isAswer: boolean,
     likeCount: number,
-    hasliked?: boolean
+    likeId?: string | undefined
  
 }
 type FirebaseQuestion = Record<string,{
@@ -50,7 +50,7 @@ export function useRoom(roomId:string){
                     isHighlighted: value.isHighlighted,
                     isAswer: value.isAswer,
                     likeCount: Object.values(value.likes  ?? {}).length,
-                    hasLiked: Object.values(value.likes ?? {}).some(like => like.authorId === user?.id)
+                    likeId: Object.entries(value.likes ?? {}).find(([key,like]) => like.authorId === user?.id)?.[0],
                 }
             })
             setTitle(databaseRoom.title)

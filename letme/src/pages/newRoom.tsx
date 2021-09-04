@@ -12,7 +12,7 @@ import {database} from '../services/firebase'
 
 import {FormEvent, useState} from 'react'
 import { Link ,useHistory} from 'react-router-dom'
-import { Room } from './Room'
+
 
 
 export function NewRoom(){
@@ -33,7 +33,7 @@ export function NewRoom(){
            authorId: user?.id
        })
        
-       history.push(`/rooms/${firebaseRoom.key}`)
+       history.push(`/admin/${firebaseRoom.key}`)
       }
 
     return(
