@@ -3,6 +3,13 @@
     box-shadow:  1px 1px 12px rgba(70, 70, 70, 0.4);
     padding: 2.4rem;
 
+    &.questionHighlighted{
+        border: 2px solid #aa93ee;
+       border-radius: 0.8rem;
+       box-shadow:  3px 8px 12px #aa93ee;
+        
+    }
+
     & + .questions{
         margin-top: 1.6rem;
     }
@@ -33,8 +40,8 @@
     }
     /*footer==========*/
 }
-.aswer{
-    margin: 0 0.8rem;
+.isHighlighted{
+    margin: 0.8rem;
 }
 button:hover{
     stroke: rgb(54, 37, 51);

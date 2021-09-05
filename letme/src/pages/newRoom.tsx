@@ -1,6 +1,7 @@
 import ilustration from '../assets/images/illustration.svg'
 import logo from '../assets/images/logo.svg'
 
+
 import '../styles/global.scss'
 import '../styles/auth.scss'
 import '../styles/button.scss' 

@@ -8,11 +8,12 @@ type questionsProps = {
         avatar: string
     };
     children?:ReactNode
+    isHighlighted?: boolean
 }
 
-export function Questions({author,content,children}:questionsProps){
+export function Questions({author,content,children,isHighlighted}:questionsProps){
     return(
-        <div className="questions">
+        <div className={`questions ${isHighlighted ? 'questionHighlighted' : ''}`}>
             <p>
                 {content}
             </p>

@@ -176,7 +176,20 @@
         }
         span{
             color:  #835afd;
+
         }
     }
 }
-
+.isAswered,.isHighlighted{
+    
+        
+    svg path{
+        stroke: #835AFD;
+    }
+}
+.isAswered{
+    svg{
+        fill: #b9b0d4;
+     
+    }
+}
